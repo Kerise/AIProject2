@@ -1,0 +1,15 @@
+body
+{
+    display:block;
+    text-align: center;
+}
+.option
+{
+    display: block;
+    width:20%;
+    float:left;
+}
+#menu
+{
+    float:none;
+}
