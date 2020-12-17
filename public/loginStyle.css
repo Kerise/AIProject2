@@ -1,0 +1,72 @@
+*{
+
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: url("./bg.jpg") no-repeat center;
+    background-size: cover;
+    font-family: sans-serif;
+}
+#image{
+    height: 100px;
+    width: 100px;
+}
+
+#logowanie{
+    margin-top: 15px;
+    font-family: sans-serif;
+    font-size: 20px;
+    text-align: center;
+    color: aquamarine;
+}
+
+
+#login-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    padding: 40px 40px 40px;
+    background: rgba(0,0,0,0.7);
+    border-radius: 10px;
+    color: #fff;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+    margin: 10% 15% 10% 40% ;
+}
+
+#login-wrapper img{
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+    width: 100px;
+    background: rgba(255,255,255,0.8);
+    border-radius: 50%;
+}
+
+#login-wrapper #inputElements{
+    width: 100%;
+    padding: 10px 0 ;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background-color: transparent;
+    color: inherit;
+}
+.btn{
+    background-color: aquamarine;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 8px;
+}
+.btn:hover{
+    background-color: #1c775d;
+    cursor: pointer;
+
+}
