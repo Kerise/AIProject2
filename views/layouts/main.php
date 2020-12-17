@@ -8,11 +8,12 @@ use \app\Core\Application;
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./mystyle.css">
-    <title><?php echo $this->title?></title>
 
+    <title><?php echo $this->title?></title>
 </head>
+
 <body>
+<?php if(Application::isGuest()){header("Location:http://localhost:8080/login");}?>
 <div id="menu">
     <a href="/">
         <div class="option">Home</div>
