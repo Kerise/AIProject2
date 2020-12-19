@@ -8,15 +8,16 @@ use \app\Core\Application;
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="stylesheet" href="./mystyle.css">
     <title><?php echo $this->title?></title>
+
 </head>
 
 <body>
 <?php if(Application::isGuest()){header("Location:http://localhost:8080/login");}?>
 <div id="menu">
     <a href="/">
-        <div class="option">Home</div>
+        <div class="option" id="home">Home</div>
     </a>
 
     <a href="/contact">
@@ -39,20 +40,21 @@ use \app\Core\Application;
 
     <?php endif; ?>
         <a href="/logout">
-            <div class="option">Welcome <?php echo Application::$app->user->getDisplayName()?> </div>
-            (Logout)
+            <div class="option2" id="logout">Welcome <?php echo Application::$app->user->getDisplayName()?> (Logout)</div>
+
         </a>
     <?php endif; ?>
 
 </div>
 
 <div class="container">
-    <?php if (Application::$app->session->getFlash('success')): ?>
-    <div class="alert alert-succes">
-        <?php echo Application::$app->session->getFlash('success') ?>
-    </div>
-    <?php endif; ?>
-    {{content}}
+        <?php if (Application::$app->session->getFlash('success')): ?>
+        <div class="alert alert-succes">
+            <?php echo Application::$app->session->getFlash('success') ?>
+        </div>
+        <?php endif; ?>
+        {{content}}
+
 </div>
 
 
