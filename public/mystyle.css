@@ -19,6 +19,7 @@ body
     color: white;
     margin-right: 200px;
     margin-top: 20px;
+    margin-bottom: 20px;
     padding: 10px;
     border-left: 2px solid #fff;
     border-right: 2px solid #fff;
@@ -26,6 +27,8 @@ body
 
 .option2{
     color: white;
+    margin-top: 20px;
+    margin-bottom: 20px;
     padding: 10px;
     border-left: 2px solid #fff;
     border-right: 2px solid #fff;
