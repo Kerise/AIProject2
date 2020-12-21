@@ -17,7 +17,7 @@ use \app\Core\Application;
 <?php if(Application::isGuest()){header("Location:http://localhost:8080/login");}?>
 <div id="menu">
     <a href="/">
-        <div class="option" id="home">Home</div>
+        <div class="option" id="home">Faktury</div>
     </a>
 
     <a href="/contact">
