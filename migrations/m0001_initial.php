@@ -15,7 +15,28 @@ class m0001_initial {
                 
 ) ENGINE=INNODB;";
         $db->pdo->exec($SQL);
+        $SQL2 = "CREATE TABLE documents (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                nrfaktury INT NOT NULL,
+                nrkontrahenta INT NOT NULL,
+                vatid INT NOT NULL,
+                kwotanetto DECIMAL NOT NULL,
+                kwotapodatkuvat DECIMAL NOT NULL,
+                kwotabrutto DECIMAL NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                
+) ENGINE=INNODB;";
+        $db->pdo->exec($SQL2);
+
+        $SQL3 = "CREATE TABLE files(
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                title VARCHAR(255) NOT NULL,
+                image VARCHAR(255) NOT NULL
+) ENGINE=INNODB;";
+        $db->pdo->exec($SQL3);
+
     }
+
 
     public function down()
     {
