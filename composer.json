@@ -1,5 +1,5 @@
 {
-    "name": "tatahah/project-ai",
+    "name": "tatahah/project-ai2",
     "authors": [
         {
             "name": "repcaK",
@@ -12,6 +12,7 @@
         }
     },
     "require": {
-        "vlucas/phpdotenv": "^5.2"
+        "vlucas/phpdotenv": "^5.2",
+      "ext-mysqli": "*"
     }
 }

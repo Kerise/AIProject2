@@ -71,6 +71,29 @@ class AuthController extends Controller
 
         return $this->render('profile');
     }
+
+    public function home(Request $request)
+    {
+
+        $invoice = new Invoice();
+        if ($request->isPost()){
+
+            $invoice->loadData($request->getBody());
+            if ($invoice->save()){
+                Application::$app->session->setFlash('success', 'Faktura dodana');
+                Application::$app->response->redirect('/');
+                exit;
+            }
+
+            return $this->render('home', [
+                'model' => $invoice
+            ]);
+        }
+        $this->setLayout('auth');
+        return $this->render('home', [
+            'model' => $invoice
+        ]);
+    }
     public function upload(Request $request)
     {
         $invo = new Invoice();

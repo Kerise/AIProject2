@@ -1,6 +1,7 @@
 <?php
 
 namespace app\Core;
+error_reporting(0);
 class Application
 {
     public static string $ROOT_DIR;
