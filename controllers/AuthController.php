@@ -19,7 +19,9 @@ class AuthController extends Controller
     {
         $this->registerMiddleware(new AuthMiddleware(['profile']));
         $this->registerMiddleware(new AuthMiddleware(['register']));
+        $this->registerMiddleware(new AuthMiddleware(['home']));
     }
+
 
     public function login(Request $request,Response $response)
     {
@@ -36,6 +38,16 @@ class AuthController extends Controller
         $this->setLayout('auth');
         return $this->render('login',[
             'model'=>$loginForm
+        ]);
+    }
+    public function home(Request $request)
+    {
+
+        $invoice = new Invoice();
+
+        $this->setLayout('auth');
+        return $this->render('home', [
+            'model' => $invoice
         ]);
     }
 
@@ -75,11 +87,6 @@ class AuthController extends Controller
     {
         $invo = new Invoice();
         $invo->loadData($request->getBody());
-        echo $invo->kwotaBrutto;
-        if(isset($_POST["delete"])){
-            echo $_POST["delete"];
-            unlink("files/".$_POST["delete"]);
-        }
         if(isset($_FILES['image'])){
             $errors= array();
             $file_name = $_FILES['image']['name'];
@@ -97,14 +104,22 @@ class AuthController extends Controller
                 }
             }
             if(empty($errors)==true){
+                $odnosnik=implode(",",$file_name);
+                $invo->odnosnik = $odnosnik;
+
                 foreach($file_name as $key => $value){
                     move_uploaded_file($file_tmp[$key],"../files/".$file_name[$key]);
                     echo "Success";
+                }
+                if ($invo->save()){
+                    Application::$app->session->setFlash('success', 'Faktura dodana');
+                    Application::$app->response->redirect('/');
                 }
             }
             else{
                 print_r($errors);
             }
+
         }
 
     }

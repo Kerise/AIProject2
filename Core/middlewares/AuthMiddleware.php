@@ -22,10 +22,10 @@ class AuthMiddleware extends BaseMiddleware
 
     public function execute()
     {
-        $role =Application::getRole();
-       if(Application::isGuest()|| $role==0)
+       $role = Application::getRole();
+       if(Application::isGuest() || $role==0)
        {
-           if(empty($this->actions)|| in_array(Application::$app->controller->action,$this->actions))
+           if(empty($this->actions) || in_array(Application::$app->controller->action,$this->actions))
            {
                throw new ForbiddenException();
            }

@@ -16,16 +16,11 @@ use \app\Core\Application;
 <body>
 <?php if(Application::isGuest()){header("Location:http://localhost:8080/login");}?>
 <div id="menu">
-    <a href="/">
+    <a href="/home">
         <div class="option" id="home">Faktury</div>
     </a>
 
-    <a href="/contact">
-        <div class="option">Contact </div>
-    </a>
-    <a href="/login">
-        <div class="option">Login </div>
-    </a>
+
     <?php if(Application::isGuest()):?>
     <?php else: ?>
     <?php $role = Application::getRole() ;

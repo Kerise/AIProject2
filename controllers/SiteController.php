@@ -5,16 +5,11 @@ namespace app\controllers;
 use app\Core\Application;
 use app\Core\Controller;
 use app\Core\Request;
+use app\Models\Invoice;
 
 class SiteController extends Controller
 {
-    public function home()
-    {
-        $params = [
-            'name' => "Stronka"
-        ];
-        return $this->render('home', $params);
-    }
+
 
     public function contact()
     {
