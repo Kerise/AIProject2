@@ -19,7 +19,6 @@ class AuthController extends Controller
     {
         $this->registerMiddleware(new AuthMiddleware(['profile']));
         $this->registerMiddleware(new AuthMiddleware(['register']));
-        $this->registerMiddleware(new AuthMiddleware(['home']));
     }
 
 
@@ -108,7 +107,7 @@ class AuthController extends Controller
                 $invo->odnosnik = $odnosnik;
 
                 foreach($file_name as $key => $value){
-                    move_uploaded_file($file_tmp[$key],"../files/".$file_name[$key]);
+                    move_uploaded_file($file_tmp[$key],"../public/files/".$file_name[$key]);
                     echo "Success";
                 }
 
@@ -123,6 +122,12 @@ class AuthController extends Controller
 
         }
 
+    }
+    public function tables(Request $request)
+    {
+        $invo = new Invoice();
+        $data=$invo->findAll();
+        return $this->render('tables',['data'=>$data]);
     }
 
 }

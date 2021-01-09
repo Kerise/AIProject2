@@ -8,6 +8,7 @@ use \app\Core\Application;
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" href="./mystyle.css">
     <title><?php echo $this->title?></title>
 
@@ -17,7 +18,7 @@ use \app\Core\Application;
 <?php if(Application::isGuest()){header("Location:http://localhost:8080/login");}?>
 <div id="menu">
     <a href="/home">
-        <div class="option" id="home">Faktury</div>
+        <div class="option" id="home">Dodaj Fakture</div>
     </a>
 
 
@@ -29,8 +30,8 @@ use \app\Core\Application;
         <a href="/register">
             <div class="option">Register </div>
         </a>
-        <a href="/profile">
-            <div class="option">Profile </div>
+        <a href="/">
+            <div class="option">Faktury </div>
         </a>
 
     <?php endif; ?>

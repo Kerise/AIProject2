@@ -34,6 +34,7 @@ $app->router->get('/logout',[AuthController::class,'logout']);
 $app->router->get('/profile',[AuthController::class,'profile']);
 $app->router->post('/upload',[AuthController::class,'upload']);
 $app->router->get('/home',[AuthController::class,'home']);
+$app->router->get('/',[AuthController::class,'tables']);
 
 
 $app->run();
