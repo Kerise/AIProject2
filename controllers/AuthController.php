@@ -45,7 +45,7 @@ class AuthController extends Controller
 
         $invoice = new Invoice();
 
-        $this->setLayout('auth');
+        $this->setLayout('main');
         return $this->render('home', [
             'model' => $invoice
         ]);
@@ -67,7 +67,7 @@ class AuthController extends Controller
                 'model' => $user
             ]);
         }
-        $this->setLayout('auth');
+        $this->setLayout('main');
         return $this->render('register', [
             'model' => $user
         ]);
@@ -111,6 +111,7 @@ class AuthController extends Controller
                     move_uploaded_file($file_tmp[$key],"../files/".$file_name[$key]);
                     echo "Success";
                 }
+
                 if ($invo->save()){
                     Application::$app->session->setFlash('success', 'Faktura dodana');
                     Application::$app->response->redirect('/');

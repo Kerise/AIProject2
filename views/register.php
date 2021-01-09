@@ -1,7 +1,7 @@
 <?php
 /** @var $model \app\models\User */
 ?>
-
+<div id="registerOtoczka">
 <h1>Create account</h1>
 <?php $form = \app\Core\form\Form::begin('', "post") ?>
     <div class="row">
@@ -18,3 +18,4 @@
 
     <button type="submit" class="btn btn-primary">Submit</button>
 <?php \app\Core\form\Form::end() ?>
+</div>
