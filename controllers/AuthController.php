@@ -10,6 +10,7 @@ use app\Core\middlewares\AuthMiddleware;
 use app\Core\Request;
 use app\Core\Response;
 use app\models\Invoice;
+use app\models\Licence;
 use app\models\LoginForm;
 use app\models\User;
 
@@ -49,6 +50,7 @@ class AuthController extends Controller
             'model' => $invoice
         ]);
     }
+
 
     public function register(Request $request)
     {
@@ -130,4 +132,42 @@ class AuthController extends Controller
         return $this->render('tables',['data'=>$data]);
     }
 
+    public function licences(Request $request)
+    {
+        $invo = new Licence();
+        $data=$invo->findAll();
+        return $this->render('licence_table',['data'=>$data]);
+    }
+
+    public function addlicence(Request $request)
+    {
+        $licence = new Licence();
+
+        $this->setLayout('main');
+        return $this->render('licence', [
+            'model' => $licence
+        ]);
+
+
+    }
+
+    public function uploadlicence(Request $request)
+    {
+        $licence = new Licence();
+        if ($request->isPost()){
+
+            $licence->loadData($request->getBody());
+            print_r($licence);
+            if ($licence->save()){
+                Application::$app->session->setFlash('success', 'Licence added');
+//                Application::$app->response->redirect('/licences');
+//                exit;
+            }
+
+            return $this->render('licence', [
+                'model' => $licence
+            ]);
+        }
+
+    }
 }

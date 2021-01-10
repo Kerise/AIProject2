@@ -23,4 +23,8 @@ class Form
     {
         return new Field($model, $attribute);
     }
+    public function date_field(Model $model, $attribute)
+    {
+        return new DateField($model, $attribute);
+    }
 }

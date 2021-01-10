@@ -35,6 +35,9 @@ $app->router->get('/profile',[AuthController::class,'profile']);
 $app->router->post('/upload',[AuthController::class,'upload']);
 $app->router->get('/home',[AuthController::class,'home']);
 $app->router->get('/',[AuthController::class,'tables']);
+$app->router->get('/addlicence',[AuthController::class,'addlicence']);
+$app->router->post('/uploadlicence',[AuthController::class,'uploadlicence']);
+$app->router->get('/licences',[AuthController::class,'licences']);
 
 
 $app->run();

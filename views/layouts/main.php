@@ -21,6 +21,9 @@ use \app\Core\Application;
         <div class="option" id="home">Dodaj Fakture</div>
     </a>
 
+    <a href="/addlicence">
+        <div class="option" id="licence">Dodaj Licencje</div>
+    </a>
 
     <?php if(Application::isGuest()):?>
     <?php else: ?>
@@ -32,6 +35,9 @@ use \app\Core\Application;
         </a>
         <a href="/">
             <div class="option">Faktury </div>
+        </a>
+        <a href="/licences">
+            <div class="option">Licencje </div>
         </a>
 
     <?php endif; ?>
