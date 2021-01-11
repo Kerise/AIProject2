@@ -51,6 +51,10 @@ class Application
     {
         return self::$app->user->role;
     }
+    public static function getID()
+    {
+        return self::$app->user->id;
+    }
 
     public function run()
     {

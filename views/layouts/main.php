@@ -24,7 +24,12 @@ use \app\Core\Application;
     <a href="/addlicence">
         <div class="option" id="licence">Dodaj Licencje</div>
     </a>
-
+    <a href="/licences">
+        <div class="option">Licencje </div>
+    </a>
+    <a href="/">
+        <div class="option">Faktury </div>
+    </a>
     <?php if(Application::isGuest()):?>
     <?php else: ?>
     <?php $role = Application::getRole() ;
@@ -33,12 +38,7 @@ use \app\Core\Application;
         <a href="/register">
             <div class="option">Register </div>
         </a>
-        <a href="/">
-            <div class="option">Faktury </div>
-        </a>
-        <a href="/licences">
-            <div class="option">Licencje </div>
-        </a>
+
 
     <?php endif; ?>
         <a href="/logout">

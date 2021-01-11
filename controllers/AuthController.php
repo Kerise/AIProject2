@@ -88,6 +88,7 @@ class AuthController extends Controller
     {
         $invo = new Invoice();
         $invo->loadData($request->getBody());
+        $invo->UserID=Application::getID();
         if(isset($_FILES['image'])){
             $errors= array();
             $file_name = $_FILES['image']['name'];
@@ -128,15 +129,31 @@ class AuthController extends Controller
     public function tables(Request $request)
     {
         $invo = new Invoice();
+        $role = Application::getRole();
+        if($role==1) {
         $data=$invo->findAll();
         return $this->render('tables',['data'=>$data]);
+        }
+        elseif ($role==0)
+        {
+            $data = $invo->findByUser(Application::getID());
+            return $this->render('tables',['data' =>$data]);
+        }
     }
 
     public function licences(Request $request)
     {
         $invo = new Licence();
-        $data=$invo->findAll();
-        return $this->render('licence_table',['data'=>$data]);
+        $role = Application::getRole();
+        if($role==1) {
+            $data = $invo->findAll();
+            return $this->render('licence_table', ['data' => $data]);
+        }
+        elseif ($role==0)
+        {
+            $data = $invo->findByUser(Application::getID());
+            return $this->render('licence_table',['data' =>$data]);
+        }
     }
 
     public function addlicence(Request $request)
@@ -160,9 +177,9 @@ class AuthController extends Controller
             print_r($licence);
             if ($licence->save()){
                 Application::$app->session->setFlash('success', 'Licence added');
-//                Application::$app->response->redirect('/licences');
-//                exit;
-            }
+                Application::$app->response->redirect('/licences');
+
+        }
 
             return $this->render('licence', [
                 'model' => $licence

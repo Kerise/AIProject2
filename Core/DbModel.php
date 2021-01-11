@@ -48,7 +48,14 @@ abstract class DbModel extends Model
     public function findAll()
     {
         $tableName= static::tableName();
-        $statement = self::prepare("SELECT * FROM $tableName");
+        $statement = self::prepare("SELECT * FROM users,$tableName where users.id = $tableName.UserID ");
+        $statement->execute();
+        return $statement->fetchAll();
+    }
+    public function findByUser($where)
+    {
+        $tableName = static::tableName();
+        $statement = self::prepare("SELECT * FROM $tableName WHERE UserID=$where");
         $statement->execute();
         return $statement->fetchAll();
     }

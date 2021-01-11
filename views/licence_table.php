@@ -5,6 +5,11 @@
     <thead>
     <tr>
         <th>ID</th>
+        <?php
+        $role=\app\Core\Application::getRole();
+        if($role==1)
+            echo "<th>email</th>";
+        ?>
         <th>Numer inwentarzowy</th>
         <th>Nazwa licencji</th>
         <th>Klucz seryjny</th>
@@ -23,6 +28,8 @@
     {
         echo "<tr>";
         echo "<td>".$value["id"]."</td>";
+        if($role == 1)
+        echo "<td>".$value["email"]."</td>";
         echo "<td>".$value["nrinwentarz"]."</td>";
         echo "<td>".$value["nazwalicencji"]."</td>";
         echo "<td>".$value["kluczseryjny"]."</td>";
@@ -32,6 +39,7 @@
         echo "<td>".$value["waznosclicencji"]."</td>";
         echo "<td>".$value["posiadaczlicencji"]."</td>";
         echo "<td>".$value["notatki"]."</td>";
+        echo "<td>".$value["created_at"]."</td>";
         echo "</tr>";
     }
     ?>
@@ -39,6 +47,10 @@
     <tfoot>
     <tr>
         <th>ID</th>
+        <?php
+        if($role==1)
+            echo "<th>email</th>";
+        ?>
         <th>Numer inwentarzowy</th>
         <th>Nazwa licencji</th>
         <th>Klucz seryjny</th>

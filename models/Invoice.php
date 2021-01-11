@@ -16,6 +16,7 @@ class Invoice extends InvoiceModel
     public int $kwotapodatkuvat=0;
     public int $kwotabrutto=0;
     public string $odnosnik='';
+    public int $userID=0;
 
 
 public function save()
@@ -31,7 +32,7 @@ public function save()
     }
     public function attributes(): array
     {
-        return ['nrfaktury', 'nrkontrahenta', 'vatid', 'kwotanetto', 'kwotapodatkuvat','kwotabrutto','odnosnik'];
+        return ['nrfaktury', 'nrkontrahenta', 'vatid', 'kwotanetto', 'kwotapodatkuvat','kwotabrutto','odnosnik','UserID'];
     }
     public function labels(): array
     {

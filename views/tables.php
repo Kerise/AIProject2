@@ -5,6 +5,12 @@
     <thead>
     <tr>
         <th>ID</th>
+        <?php
+        $role=\app\Core\Application::getRole();
+        if($role==1)
+            echo "<th>email</th>";
+        ?>
+
         <th>Numer Faktury</th>
         <th>Numer Kontrahenta</th>
         <th>VAT id</th>
@@ -17,10 +23,13 @@
     </thead>
     <tbody>
     <?php
+    
     foreach ($data as $value)
     {
         echo "<tr>";
         echo "<td>".$value["id"]."</td>";
+        if($role == 1)
+        echo "<td>".$value["email"]."</td>";
         echo "<td>".$value["nrfaktury"]."</td>";
         echo "<td>".$value["nrkontrahenta"]."</td>";
         echo "<td>".$value["vatid"]."</td>";
@@ -37,6 +46,10 @@
     <tfoot>
     <tr>
         <th>ID</th>
+        <?php
+        if($role==1)
+            echo "<th>email</th>";
+        ?>
         <th>Numer Faktury</th>
         <th>Numer Kontrahenta</th>
         <th>VAT id</th>

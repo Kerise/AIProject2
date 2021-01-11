@@ -18,6 +18,7 @@ class Licence extends LicenceModel
     public string $waznosclicencji='';
     public string $posiadaczlicencji='';
     public string $notatki='';
+    public int $userID=0;
 
 
     public function save()
@@ -33,7 +34,7 @@ class Licence extends LicenceModel
     }
     public function attributes(): array
     {
-        return ['nrinwentarz', 'nazwalicencji', 'kluczseryjny', 'datazakupu', 'idfaktury','datawsparcia','waznosclicencji', 'posiadaczlicencji', 'notatki'];
+        return ['nrinwentarz', 'nazwalicencji', 'kluczseryjny', 'datazakupu', 'idfaktury','datawsparcia','waznosclicencji', 'posiadaczlicencji', 'notatki','UserID'];
     }
     public function labels(): array
     {
