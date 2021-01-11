@@ -15,8 +15,10 @@ use \app\Core\Application;
 </head>
 
 <body>
-<?php if(Application::isGuest()){header("Location:http://localhost:8080/login");}?>
 <div id="menu">
+<?php if(Application::isGuest()){header("Location:http://localhost:8080/login");}
+$role=Application::getRole();
+if($role!=2):?>
     <a href="/home">
         <div class="option" id="home">Dodaj Fakture</div>
     </a>
@@ -24,6 +26,7 @@ use \app\Core\Application;
     <a href="/addlicence">
         <div class="option" id="licence">Dodaj Licencje</div>
     </a>
+    <?php endif; ?>
     <a href="/licences">
         <div class="option">Licencje </div>
     </a>
@@ -43,8 +46,14 @@ use \app\Core\Application;
     <?php endif; ?>
         <a href="/logout">
             <div class="option2" id="logout">Welcome <?php echo Application::$app->user->getDisplayName()?> (Logout)</div>
-
         </a>
+        <div class="option2">
+        <?php $role=Application::getRole();
+        if($role==0)echo "U";
+        elseif($role==1)echo "A";
+        elseif($role==2)echo "S";
+        ?>
+        </div>
     <?php endif; ?>
 
 </div>

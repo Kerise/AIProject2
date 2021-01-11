@@ -20,6 +20,10 @@ class AuthController extends Controller
     {
         $this->registerMiddleware(new AuthMiddleware(['profile']));
         $this->registerMiddleware(new AuthMiddleware(['register']));
+        $this->registerMiddleware(new AuthMiddleware(['home']));
+        $this->registerMiddleware(new AuthMiddleware(['upload']));
+        $this->registerMiddleware(new AuthMiddleware(['addlicence']));
+        $this->registerMiddleware(new AuthMiddleware(['uploadlicence']));
     }
 
 
@@ -130,30 +134,32 @@ class AuthController extends Controller
     {
         $invo = new Invoice();
         $role = Application::getRole();
-        if($role==1) {
+        if ($role==0)
+        {
+        $data = $invo->findByUser(Application::getID());
+            return $this->render('tables',['data' =>$data]);
+        }
+        else {
         $data=$invo->findAll();
         return $this->render('tables',['data'=>$data]);
         }
-        elseif ($role==0)
-        {
-            $data = $invo->findByUser(Application::getID());
-            return $this->render('tables',['data' =>$data]);
-        }
+
     }
 
     public function licences(Request $request)
     {
         $invo = new Licence();
         $role = Application::getRole();
-        if($role==1) {
+        if ($role==0)
+        {
+        $data = $invo->findByUser(Application::getID());
+            return $this->render('licence_table',['data' =>$data]);
+        }
+        else{
             $data = $invo->findAll();
             return $this->render('licence_table', ['data' => $data]);
         }
-        elseif ($role==0)
-        {
-            $data = $invo->findByUser(Application::getID());
-            return $this->render('licence_table',['data' =>$data]);
-        }
+
     }
 
     public function addlicence(Request $request)

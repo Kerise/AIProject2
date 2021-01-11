@@ -7,10 +7,11 @@
     <thead>
     <tr>
         <th>ID</th>
-        <th>Options</th>
         <?php
         $role=\app\Core\Application::getRole();
-        if($role==1)
+        if($role==1||$role==0)
+        echo "<th>Options</th>";
+        if($role==1 || $role==2)
             echo "<th>email</th>";
         ?>
         <th>Numer inwentarzowy</th>
@@ -31,11 +32,12 @@
     {
         echo "<tr>";
         echo "<td>".$value["id"]."</td>";
-
-        echo "<td> <button class=\"dbtn\" onclick='deleteRecord(\"".$value['id']."\")'> <i class=\"fas fa-minus-circle\"></i></button>";
-        echo "<button class=\"ebtn\"><i class=\"fas fa-edit\"></i></button>";
-        echo "</td>";
-        if($role == 1)
+        if($role==0||$role==1) {
+            echo "<td> <button class=\"dbtn\" onclick='deleteRecord(\"" . $value['id'] . "\")'> <i class=\"fas fa-minus-circle\"></i></button>";
+            echo "<button class=\"ebtn\"><i class=\"fas fa-edit\"></i></button>";
+            echo "</td>";
+        }
+        if($role == 1 || $role==2)
         echo "<td>".$value["email"]."</td>";
         echo "<td>".$value["nrinwentarz"]."</td>";
         echo "<td>".$value["nazwalicencji"]."</td>";
@@ -54,9 +56,10 @@
     <tfoot>
     <tr>
         <th>ID</th>
-        <th>Options</th>
         <?php
-        if($role==1)
+        if($role==0||$role==1)
+        echo "<th>Options</th>";
+        if($role==1 || $role==2)
             echo "<th>email</th>";
         ?>
         <th>Numer inwentarzowy</th>
