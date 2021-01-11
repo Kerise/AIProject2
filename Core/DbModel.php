@@ -60,7 +60,13 @@ abstract class DbModel extends Model
         return $statement->fetchAll();
     }
 
-
+    public function deleteById($id)
+    {
+        $tableName = static::tableName();
+        $statement = self::prepare("DELETE FROM $tableName WHERE id=$id");
+        $statement->execute();
+        return 'OK';
+    }
 
 
     public static function prepare($sql)

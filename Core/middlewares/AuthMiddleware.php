@@ -31,4 +31,5 @@ class AuthMiddleware extends BaseMiddleware
            }
        }
     }
+
 }

@@ -167,13 +167,23 @@ class AuthController extends Controller
 
 
     }
+    public function delete(Request $request)
+    {
+        if ($_GET['table'] == "licences") $obj = new Licence();
+        elseif ($_GET['table'] == "documents") $obj = new Invoice();
+        $obj->deleteById($_GET['id']);
+        Application::$app->session->setFlash('success', 'Usunięto rekord typu '.$_GET['table']);
+        Application::$app->response->redirect('/'.$_GET['table']);
+    }
 
     public function uploadlicence(Request $request)
     {
         $licence = new Licence();
+
         if ($request->isPost()){
 
             $licence->loadData($request->getBody());
+            $licence->UserID = Application::getID();
             print_r($licence);
             if ($licence->save()){
                 Application::$app->session->setFlash('success', 'Licence added');

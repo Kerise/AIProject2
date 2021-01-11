@@ -127,3 +127,25 @@ label{
     text-decoration: none;
     cursor: pointer;
 }
+.dbtn {
+     background-color: #ff5f4e; /* Blue background */
+     border: none; /* Remove borders */
+     color: white; /* White text */
+     padding: 6px 8px; /* Some padding */
+     font-size: 16px; /* Set a font size */
+     cursor: pointer; /* Mouse pointer on hover */
+ }
+.ebtn {
+    background-color: #4883ff; /* Blue background */
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 6px 8px; /* Some padding */
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+}
+.dbtn:hover {
+    background-color: #e10000;
+}
+.ebtn:hover {
+    background-color: #113ee1;
+}

@@ -40,8 +40,8 @@ class DateField
                 </div>
            </div>
         ', $this->model->getLabel($this->attribute),
-            $this->type,
             $this->attribute,
+            $this->type,
             $this->model->{$this->attribute},
             $this->model->hasError($this->attribute) ? ' is-invalid' : '',
             $this->model->getFirstError($this->attribute)
