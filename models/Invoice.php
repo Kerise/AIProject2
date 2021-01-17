@@ -23,6 +23,10 @@ public function save()
 {
     return parent::save();
 }
+public function edit($id)
+{
+    return parent::edit($id);
+}
     public function rules(): array
     {
         return [

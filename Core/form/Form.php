@@ -27,4 +27,8 @@ class Form
     {
         return new DateField($model, $attribute);
     }
+    public function edit_field(Model $model,$attribute,$value)
+    {
+        return new EditField($model,$attribute,$value);
+    }
 }

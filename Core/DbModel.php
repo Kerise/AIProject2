@@ -30,6 +30,55 @@ abstract class DbModel extends Model
         $statement->execute();
         return true;
     }
+    public function edit($id)
+    {
+        $tableName = $this->tableName();
+        $attributes = $this->attributes();
+        if($tableName == "documents")
+        {
+            $decrement=3;
+        }
+        elseif($tableName == "licences")
+        {
+            $decrement=2;
+        }
+        $params = array_map(function ($attr) {
+            return ":$attr";
+        },$attributes);
+        $tab = [];
+        foreach ($attributes as $i=>$a){
+            $tab[$a]=$params[$i];
+        }
+
+        $str = "";
+        $index=0;
+        foreach ($tab as $i=>$r){
+            if($index==(count($tab)-($decrement-1))){
+                break;
+            }
+            if($index==(count($tab)-$decrement)){
+                $str .= "$i=$r";
+            }else{
+                $str .= "$i=$r,";
+            }
+            $index+=1;
+        }
+        echo $str;
+        $statement = self::prepare("UPDATE $tableName SET $str where id=:id");
+        $index=0;
+
+        foreach ($attributes as $attribute) {
+            if($index==(count($attributes)-($decrement-1))){
+                break;
+            }
+            $statement->bindValue(":id", $id);
+            $statement->bindValue(":$attribute", $this->{$attribute});
+            $index+=1;
+        }
+
+        $statement->execute();
+        return true;
+    }
     public function findOne($where)
     {
         $tableName = static::tableName();

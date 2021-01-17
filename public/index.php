@@ -39,6 +39,7 @@ $app->router->get('/addlicence',[AuthController::class,'addlicence']);
 $app->router->post('/uploadlicence',[AuthController::class,'uploadlicence']);
 $app->router->get('/licences',[AuthController::class,'licences']);
 $app->router->get('/delete',[AuthController::class,'delete']);
+$app->router->post('/edit',[AuthController::class,'edit']);
 $app->router->get('/documents',[AuthController::class,'tables']);
 
 

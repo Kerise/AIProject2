@@ -130,6 +130,7 @@ class AuthController extends Controller
         }
 
     }
+
     public function tables(Request $request)
     {
         $invo = new Invoice();
@@ -137,27 +138,27 @@ class AuthController extends Controller
         if ($role==0)
         {
         $data = $invo->findByUser(Application::getID());
-            return $this->render('tables',['data' =>$data]);
+            return $this->render('tables',['data' =>$data,'model'=>$invo]);
         }
         else {
         $data=$invo->findAll();
-        return $this->render('tables',['data'=>$data]);
+        return $this->render('tables',['data'=>$data, 'model' => $invo]);
         }
 
     }
 
     public function licences(Request $request)
     {
-        $invo = new Licence();
+        $licence = new Licence();
         $role = Application::getRole();
         if ($role==0)
         {
-        $data = $invo->findByUser(Application::getID());
-            return $this->render('licence_table',['data' =>$data]);
+        $data = $licence->findByUser(Application::getID());
+            return $this->render('licence_table',['data' =>$data,'model'=>$licence]);
         }
         else{
-            $data = $invo->findAll();
-            return $this->render('licence_table', ['data' => $data]);
+            $data = $licence->findAll();
+            return $this->render('licence_table', ['data' => $data,'model'=>$licence]);
         }
 
     }
@@ -181,6 +182,42 @@ class AuthController extends Controller
         Application::$app->session->setFlash('success', 'Usunięto rekord typu '.$_GET['table']);
         Application::$app->response->redirect('/'.$_GET['table']);
     }
+    public function edit(Request $request)
+    {
+        if($_POST['action']=='invoice') {
+            $invo = new Invoice();
+            if ($request->isPost()) {
+                $invo->loadData($request->getBody());
+
+                if ($invo->edit($_POST['id'])) {
+                    Application::$app->session->setFlash('success', 'Faktura edytowana');
+                    Application::$app->response->redirect('/');
+
+                }
+
+                return $this->render('tables', [
+                    'model' => $invo
+                ]);
+            }
+        }
+        elseif ($_POST['action']=='licence')
+        {
+            $licence= new Licence();
+            if($request->isPost())
+            {
+                $licence->loadData($request->getBody());
+                if($licence->edit($_POST['id']))
+                {
+                    Application::$app->session->setFlash('success', 'Licencja edytowana');
+                    Application::$app->response->redirect('/licences');
+                }
+                return $this->render('licences', [
+                    'model' => $licence
+                ]);
+            }
+        }
+
+    }
 
     public function uploadlicence(Request $request)
     {
@@ -190,7 +227,6 @@ class AuthController extends Controller
 
             $licence->loadData($request->getBody());
             $licence->UserID = Application::getID();
-            print_r($licence);
             if ($licence->save()){
                 Application::$app->session->setFlash('success', 'Licence added');
                 Application::$app->response->redirect('/licences');

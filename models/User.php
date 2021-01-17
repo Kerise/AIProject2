@@ -60,11 +60,11 @@ class User extends UserModel
     public function labels(): array
     {
         return [
-            'firstname' => 'First name',
-            'lastname' => 'Last name',
+            'firstname' => 'Imię',
+            'lastname' => 'Nazwisko',
             'email' => 'E-mail',
-            'password' => 'Password',
-            'confirmPassword' => 'Confirm password',
+            'password' => 'Hasło',
+            'confirmPassword' => 'Potwierdź hasło',
         ];
     }
     public function getDisplayName(): string

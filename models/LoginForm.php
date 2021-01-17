@@ -20,8 +20,8 @@ class LoginForm extends Model
     public function labels(): array
     {
         return [
-            'email' =>  'Your email',
-            'password'=> 'Password'
+            'email' =>  'Email',
+            'password'=> 'Hasło:'
         ];
     }
 

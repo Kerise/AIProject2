@@ -28,8 +28,9 @@
 <?php echo $form->field($model, 'kwotabrutto')?>
 
 
-        <input type="submit" value="Wyślij pliki"/>
-        <input type="file" class="custom-file-input"  name="image[]" multiple="">
+
+        <input type="file" class="custom-file-input"  name="image[]" multiple=""><br>
+        <input type="submit" value="Dodaj fakture"/>
     </div>
 <?php \app\Core\form\Form::end() ?>
 </div>

@@ -25,7 +25,7 @@
     <?php echo $form->date_field($model, 'datazakupu') ?>
     <?php echo $form->field($model, 'idfaktury')?>
     <?php echo $form->date_field($model, 'datawsparcia')?>
-    <?php echo $form->field($model, 'waznosclicencji')?>
+    <?php echo $form->date_field($model, 'waznosclicencji')?>
     <?php echo $form->field($model, 'posiadaczlicencji')?>
     <?php echo $form->field($model, 'notatki')?>
 

@@ -16,6 +16,6 @@
     <?php echo $form->field($model, 'password')->passwordField() ?>
     <?php echo $form->field($model, 'confirmPassword')->passwordField() ?>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Zarejestruj</button>
 <?php \app\Core\form\Form::end() ?>
 </div>
