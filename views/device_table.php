@@ -121,12 +121,14 @@
 <script>
     var modal = document.getElementById("myModal");
     var editmodal = document.getElementById("myEditModal");
+
     // Get the button that opens the modal
     var btn = document.getElementById("myBtn");
 
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
     var span2 = document.getElementsByClassName("close2")[0];
+
 
     // When the user clicks on the button, open the modal
     function openModal(x){
@@ -148,6 +150,7 @@
         editmodal.style.display = "none";
     }
 
+
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
         if (event.target == modal) {
@@ -157,25 +160,48 @@
         {
             editmodal.style.display = "none";
         }
+
     }
     function deleteRecord(x) {
+        let a = confirm("Jesteś pewien?");
+        if(a==true){
         document.location = '/delete?id='+x+'&table=devices'
+            }
+        else
+            return;
     }
     function editRecord(x)
     {
-        x=x.split(',');
-        editmodal.style.display = "block";
-        let row = document.getElementById(x);
-        document.getElementsByName("nrinwentarz")[0].value=row.getElementsByTagName("td")[3].innerText;
-        document.getElementsByName("nazwasprzetu")[0].value=row.getElementsByTagName("td")[4].innerText;
-        document.getElementsByName("numerseryjny")[0].value=row.getElementsByTagName("td")[5].innerText;
-        document.getElementsByName("datazakupu")[0].value=row.getElementsByTagName("td")[6].innerText;
-        document.getElementsByName("gwarancja")[0].value=row.getElementsByTagName("td")[8].innerText;
-        document.getElementsByName("wartoscnetto")[0].value=row.getElementsByTagName("td")[9].innerText;
-        document.getElementsByName("posiadaczsprzetu")[0].value=row.getElementsByTagName("td")[10].innerText;
-        document.getElementsByName("notatki")[0].value=row.getElementsByTagName("td")[11].innerText;
-        document.getElementsByName("id")[0].value=x;
-
+        let rola=document.getElementById("rola").innerText;
+        if(rola=="A") {
+            x = x.split(',');
+            editmodal.style.display = "block";
+            let row = document.getElementById(x);
+            document.getElementsByName("nrinwentarz")[0].value = row.getElementsByTagName("td")[3].innerText;
+            document.getElementsByName("nazwasprzetu")[0].value = row.getElementsByTagName("td")[4].innerText;
+            document.getElementsByName("numerseryjny")[0].value = row.getElementsByTagName("td")[5].innerText;
+            document.getElementsByName("datazakupu")[0].value = row.getElementsByTagName("td")[6].innerText;
+            document.getElementsByName("gwarancja")[0].value = row.getElementsByTagName("td")[8].innerText;
+            document.getElementsByName("wartoscnetto")[0].value = row.getElementsByTagName("td")[9].innerText;
+            document.getElementsByName("posiadaczsprzetu")[0].value = row.getElementsByTagName("td")[10].innerText;
+            document.getElementsByName("notatki")[0].value = row.getElementsByTagName("td")[11].innerText;
+            document.getElementsByName("id")[0].value = x;
+        }
+        else if(rola=="U")
+        {
+            x = x.split(',');
+            editmodal.style.display = "block";
+            let row = document.getElementById(x);
+            document.getElementsByName("nrinwentarz")[0].value = row.getElementsByTagName("td")[2].innerText;
+            document.getElementsByName("nazwasprzetu")[0].value = row.getElementsByTagName("td")[3].innerText;
+            document.getElementsByName("numerseryjny")[0].value = row.getElementsByTagName("td")[4].innerText;
+            document.getElementsByName("datazakupu")[0].value = row.getElementsByTagName("td")[5].innerText;
+            document.getElementsByName("gwarancja")[0].value = row.getElementsByTagName("td")[7].innerText;
+            document.getElementsByName("wartoscnetto")[0].value = row.getElementsByTagName("td")[8].innerText;
+            document.getElementsByName("posiadaczsprzetu")[0].value = row.getElementsByTagName("td")[9].innerText;
+            document.getElementsByName("notatki")[0].value = row.getElementsByTagName("td")[10].innerText;
+            document.getElementsByName("id")[0].value = x;
+        }
     }
 </script>
 <?php

@@ -42,6 +42,10 @@ abstract class DbModel extends Model
         {
             $decrement=2;
         }
+        elseif($tableName == "devices")
+        {
+            $decrement=3;
+        }
         $params = array_map(function ($attr) {
             return ":$attr";
         },$attributes);
@@ -63,10 +67,8 @@ abstract class DbModel extends Model
             }
             $index+=1;
         }
-        echo $str;
         $statement = self::prepare("UPDATE $tableName SET $str where id=:id");
         $index=0;
-
         foreach ($attributes as $attribute) {
             if($index==(count($attributes)-($decrement-1))){
                 break;
@@ -77,7 +79,7 @@ abstract class DbModel extends Model
         }
 
         $statement->execute();
-        return true;
+       return true;
     }
     public function findOne($where)
     {

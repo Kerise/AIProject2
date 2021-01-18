@@ -67,7 +67,7 @@ if($role!=2):?>
         <a href="/logout">
             <div class="option2" id="logout">Uszanowanie <?php echo Application::$app->user->getDisplayName()?> (Logout)</div>
         </a>
-        <div class="option2">
+        <div class="option2" id="rola">
         <?php $role=Application::getRole();
         if($role==0)echo "U";
         elseif($role==1)echo "A";

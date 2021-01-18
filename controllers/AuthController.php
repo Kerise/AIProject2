@@ -240,6 +240,7 @@ class AuthController extends Controller
         if($_POST['action']=='invoice') {
             $invo = new Invoice();
             if ($request->isPost()) {
+                print_r($request->getBody());
                 $invo->loadData($request->getBody());
 
                 if ($invo->edit($_POST['id'])) {
@@ -266,6 +267,22 @@ class AuthController extends Controller
                 }
                 return $this->render('licences', [
                     'model' => $licence
+                ]);
+            }
+        }
+        elseif($_POST['action'] == 'devices')
+        {
+            $dev = new Device();
+            if($request->isPost())
+            {
+                $dev->LoadData($request->getBody());
+                if($dev->edit($_POST['id']))
+                {
+                    Application::$app->session->setFlash('success', 'Sprzęt edytowana');
+                    Application::$app->response->redirect('/devices');
+                }
+                return $this->render('devices', [
+                    'model' => $dev
                 ]);
             }
         }

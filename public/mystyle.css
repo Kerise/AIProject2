@@ -176,3 +176,18 @@ label{
     flex-direction: column;
     margin-left: 40%;
 }
+#choice1
+ {
+     font-size: 30px;
+     background-color:green;
+ }
+#choice2
+{
+    font-size: 30px;
+    background-color:red;
+}
+.close3
+{
+    font-size: 40px;
+    color:red;
+}

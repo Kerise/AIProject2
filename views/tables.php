@@ -158,21 +158,41 @@
         }
     }
     function deleteRecord(x) {
+        let a =confirm("Jesteś pewien?");
+        if(a==true){
         document.location = '/delete?id='+x+'&table=documents'
+        }
+        else
+            return;
     }
     function editRecord(x)
     {
-        x=x.split(',');
-        editmodal.style.display = "block";
-        let row = document.getElementById(x);
-        document.getElementsByName("nrfaktury")[0].value=row.getElementsByTagName("td")[3].innerText;
-        document.getElementsByName("nrkontrahenta")[0].value=row.getElementsByTagName("td")[4].innerText;
-        document.getElementsByName("vatid")[0].value=row.getElementsByTagName("td")[5].innerText;
-        document.getElementsByName("kwotanetto")[0].value=row.getElementsByTagName("td")[6].innerText;
-        document.getElementsByName("kwotapodatkuvat")[0].value=row.getElementsByTagName("td")[7].innerText;
-        document.getElementsByName("kwotabrutto")[0].value=row.getElementsByTagName("td")[8].innerText;
-        document.getElementsByName("id")[0].value=x;
-
+        let rola=document.getElementById("rola").innerText;
+        if(rola=="A") {
+            x = x.split(',');
+            editmodal.style.display = "block";
+            let row = document.getElementById(x);
+            document.getElementsByName("nrfaktury")[0].value = row.getElementsByTagName("td")[3].innerText;
+            document.getElementsByName("nrkontrahenta")[0].value = row.getElementsByTagName("td")[4].innerText;
+            document.getElementsByName("vatid")[0].value = row.getElementsByTagName("td")[5].innerText;
+            document.getElementsByName("kwotanetto")[0].value = row.getElementsByTagName("td")[6].innerText;
+            document.getElementsByName("kwotapodatkuvat")[0].value = row.getElementsByTagName("td")[7].innerText;
+            document.getElementsByName("kwotabrutto")[0].value = row.getElementsByTagName("td")[8].innerText;
+            document.getElementsByName("id")[0].value = x;
+        }
+        else if(rola=="U")
+        {
+            x = x.split(',');
+            editmodal.style.display = "block";
+            let row = document.getElementById(x);
+            document.getElementsByName("nrfaktury")[0].value = row.getElementsByTagName("td")[2].innerText;
+            document.getElementsByName("nrkontrahenta")[0].value = row.getElementsByTagName("td")[3].innerText;
+            document.getElementsByName("vatid")[0].value = row.getElementsByTagName("td")[4].innerText;
+            document.getElementsByName("kwotanetto")[0].value = row.getElementsByTagName("td")[5].innerText;
+            document.getElementsByName("kwotapodatkuvat")[0].value = row.getElementsByTagName("td")[6].innerText;
+            document.getElementsByName("kwotabrutto")[0].value = row.getElementsByTagName("td")[7].innerText;
+            document.getElementsByName("id")[0].value = x;
+        }
     }
 </script>
 <?php

@@ -127,11 +127,13 @@
     var span = document.getElementsByClassName("close")[0];
     var span2 = document.getElementsByClassName("close2")[0];
 
+
     // When the user clicks on the button, open the modal
     function openModal(x){
         $("#modal").empty();
         x=x.split(',');
         console.log(x);
+
         $.each(x, function(i,el){$("#modal").append("<a href=./files/"+el+">"+el+"</a><br>");})
 
         modal.style.display = "block";
@@ -156,25 +158,48 @@
         {
             editmodal.style.display = "none";
         }
+
     }
     function deleteRecord(x) {
+        let a=confirm("Jesteś pewien?");
+        if(a==true){
         document.location = '/delete?id='+x+'&table=licences'
+            }
+        else
+            return;
     }
     function editRecord(x)
     {
-        x=x.split(',');
-        editmodal.style.display = "block";
-        let row = document.getElementById(x);
-        document.getElementsByName("nrinwentarz")[0].value=row.getElementsByTagName("td")[3].innerText;
-        document.getElementsByName("nazwalicencji")[0].value=row.getElementsByTagName("td")[4].innerText;
-        document.getElementsByName("kluczseryjny")[0].value=row.getElementsByTagName("td")[5].innerText;
-        document.getElementsByName("datazakupu")[0].value=row.getElementsByTagName("td")[6].innerText;
-        document.getElementsByName("datawsparcia")[0].value=row.getElementsByTagName("td")[8].innerText;
-        document.getElementsByName("waznosclicencji")[0].value=row.getElementsByTagName("td")[9].innerText;
-        document.getElementsByName("posiadaczlicencji")[0].value=row.getElementsByTagName("td")[10].innerText;
-        document.getElementsByName("notatki")[0].value=row.getElementsByTagName("td")[11].innerText;
-        document.getElementsByName("id")[0].value=x;
-
+        let rola=document.getElementById("rola").innerText;
+        if(rola=="A") {
+            x = x.split(',');
+            editmodal.style.display = "block";
+            let row = document.getElementById(x);
+            document.getElementsByName("nrinwentarz")[0].value = row.getElementsByTagName("td")[3].innerText;
+            document.getElementsByName("nazwalicencji")[0].value = row.getElementsByTagName("td")[4].innerText;
+            document.getElementsByName("kluczseryjny")[0].value = row.getElementsByTagName("td")[5].innerText;
+            document.getElementsByName("datazakupu")[0].value = row.getElementsByTagName("td")[6].innerText;
+            document.getElementsByName("datawsparcia")[0].value = row.getElementsByTagName("td")[8].innerText;
+            document.getElementsByName("waznosclicencji")[0].value = row.getElementsByTagName("td")[9].innerText;
+            document.getElementsByName("posiadaczlicencji")[0].value = row.getElementsByTagName("td")[10].innerText;
+            document.getElementsByName("notatki")[0].value = row.getElementsByTagName("td")[11].innerText;
+            document.getElementsByName("id")[0].value = x;
+        }
+        else if(rola=="U")
+        {
+            x = x.split(',');
+            editmodal.style.display = "block";
+            let row = document.getElementById(x);
+            document.getElementsByName("nrinwentarz")[0].value = row.getElementsByTagName("td")[2].innerText;
+            document.getElementsByName("nazwalicencji")[0].value = row.getElementsByTagName("td")[3].innerText;
+            document.getElementsByName("kluczseryjny")[0].value = row.getElementsByTagName("td")[4].innerText;
+            document.getElementsByName("datazakupu")[0].value = row.getElementsByTagName("td")[5].innerText;
+            document.getElementsByName("datawsparcia")[0].value = row.getElementsByTagName("td")[7].innerText;
+            document.getElementsByName("waznosclicencji")[0].value = row.getElementsByTagName("td")[8].innerText;
+            document.getElementsByName("posiadaczlicencji")[0].value = row.getElementsByTagName("td")[9].innerText;
+            document.getElementsByName("notatki")[0].value = row.getElementsByTagName("td")[10].innerText;
+            document.getElementsByName("id")[0].value = x;
+        }
     }
 </script>
 <?php
