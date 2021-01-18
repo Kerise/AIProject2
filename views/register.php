@@ -2,7 +2,7 @@
 /** @var $model \app\models\User */
 ?>
 <div id="registerOtoczka">
-<h1>Create account</h1>
+<h1>Stwórz konto</h1>
 <?php $form = \app\Core\form\Form::begin('', "post") ?>
     <div class="row">
         <div class="col">

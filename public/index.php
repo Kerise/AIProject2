@@ -41,6 +41,9 @@ $app->router->get('/licences',[AuthController::class,'licences']);
 $app->router->get('/delete',[AuthController::class,'delete']);
 $app->router->post('/edit',[AuthController::class,'edit']);
 $app->router->get('/documents',[AuthController::class,'tables']);
+$app->router->get('/adddevice',[AuthController::class,'adddevice']);
+$app->router->post('/uploaddevice',[AuthController::class,'uploaddevice']);
+$app->router->get('/devices',[AuthController::class,'devices']);
 
 
 $app->run();

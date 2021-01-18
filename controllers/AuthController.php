@@ -9,6 +9,7 @@ use app\Core\Controller;
 use app\Core\middlewares\AuthMiddleware;
 use app\Core\Request;
 use app\Core\Response;
+use app\models\Device;
 use app\models\Invoice;
 use app\models\Licence;
 use app\models\LoginForm;
@@ -174,10 +175,62 @@ class AuthController extends Controller
 
 
     }
+
+
+    public function devices(Request $request)
+    {
+        $device = new Device();
+        $role = Application::getRole();
+        if ($role==0)
+        {
+            $data = $device->findByUser(Application::getID());
+            return $this->render('device_table',['data' =>$data,'model'=>$device]);
+        }
+        else{
+            $data = $device->findAll();
+            return $this->render('device_table', ['data' => $data,'model'=>$device]);
+        }
+
+    }
+
+    public function adddevice(Request $request)
+    {
+        $device = new Device();
+
+        $this->setLayout('main');
+        return $this->render('device', [
+            'model' => $device
+        ]);
+
+
+    }
+
+    public function uploaddevice(Request $request)
+    {
+        $device = new Device();
+
+        if ($request->isPost()){
+
+            $device->loadData($request->getBody());
+            $device->UserID = Application::getID();
+            if ($device->save()){
+                Application::$app->session->setFlash('success', 'Device added');
+                Application::$app->response->redirect('/devices');
+
+            }
+
+            return $this->render('device', [
+                'model' => $device
+            ]);
+        }
+
+    }
+
     public function delete(Request $request)
     {
         if ($_GET['table'] == "licences") $obj = new Licence();
         elseif ($_GET['table'] == "documents") $obj = new Invoice();
+        elseif ($_GET['table'] == "devices") $obj = new Device();
         $obj->deleteById($_GET['id']);
         Application::$app->session->setFlash('success', 'Usunięto rekord typu '.$_GET['table']);
         Application::$app->response->redirect('/'.$_GET['table']);
