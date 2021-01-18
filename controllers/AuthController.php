@@ -154,11 +154,11 @@ class AuthController extends Controller
         $role = Application::getRole();
         if ($role==0)
         {
-        $data = $licence->findByUser(Application::getID());
+        $data = $licence->findLicencesByUser(Application::getID());
             return $this->render('licence_table',['data' =>$data,'model'=>$licence]);
         }
         else{
-            $data = $licence->findAll();
+            $data = $licence->findAllLicences();
             return $this->render('licence_table', ['data' => $data,'model'=>$licence]);
         }
 
@@ -183,11 +183,12 @@ class AuthController extends Controller
         $role = Application::getRole();
         if ($role==0)
         {
-            $data = $device->findByUser(Application::getID());
+            $data = $device->findLicensesByUser(Application::getID());
+
             return $this->render('device_table',['data' =>$data,'model'=>$device]);
         }
         else{
-            $data = $device->findAll();
+            $data = $device->findAllLicences();
             return $this->render('device_table', ['data' => $data,'model'=>$device]);
         }
 

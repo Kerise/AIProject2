@@ -103,10 +103,24 @@ abstract class DbModel extends Model
         $statement->execute();
         return $statement->fetchAll();
     }
+    public function findAllLicences()
+    {
+        $tableName= static::tableName();
+        $statement = self::prepare("SELECT * FROM users,$tableName,documents where users.id = $tableName.UserID and $tableName.UserID=documents.UserID and idfaktury=documents.nrfaktury");
+        $statement->execute();
+        return $statement->fetchAll();
+    }
     public function findByUser($where)
     {
         $tableName = static::tableName();
         $statement = self::prepare("SELECT * FROM $tableName WHERE UserID=$where");
+        $statement->execute();
+        return $statement->fetchAll();
+    }
+    public function findLicensesByUser($where)
+    {
+        $tableName = static::tableName();
+        $statement = self::prepare("SELECT * FROM $tableName,documents WHERE UserID=$where and $tableName.UserID=documents.UserID and idfaktury=documents.nrfaktury");
         $statement->execute();
         return $statement->fetchAll();
     }

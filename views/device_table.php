@@ -45,7 +45,7 @@
         echo "<td>".$value["nazwasprzetu"]."</td>";
         echo "<td>".$value["numerseryjny"]."</td>";
         echo "<td>".$value["datazakupu"]."</td>";
-        echo "<td><button id=\"myBtn\" onclick='openModal(\"".$value['idfaktury']."\")'>Otwórz</button></td>";
+        echo "<td><button id=\"myBtn\" onclick='openModal(\"".$value['odnosnik']."\")'>Otwórz</button></td>";
         echo "<td>".$value["gwarancja"]."</td>";
         echo "<td>".$value["wartoscnetto"]."</td>";
         echo "<td>".$value["posiadaczsprzetu"]."</td>";

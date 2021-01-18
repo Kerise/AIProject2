@@ -45,7 +45,7 @@
         echo "<td>".$value["nazwalicencji"]."</td>";
         echo "<td>".$value["kluczseryjny"]."</td>";
         echo "<td>".$value["datazakupu"]."</td>";
-        echo "<td><button id=\"myBtn\" onclick='openModal(\"".$value['idfaktury']."\")'>Otwórz</button></td>";
+        echo "<td><button id=\"myBtn\" onclick='openModal(\"".$value['odnosnik']."\")'>Otwórz</button></td>";
         echo "<td>".$value["datawsparcia"]."</td>";
         echo "<td>".$value["waznosclicencji"]."</td>";
         echo "<td>".$value["posiadaczlicencji"]."</td>";
@@ -134,7 +134,7 @@
         x=x.split(',');
         console.log(x);
 
-        $.each(x, function(i,el){$("#modal").append("<a href=./files/"+el+">"+el+"</a><br>");})
+        $.each(x, function(i,el){$("#modal").append("<a href=\"./files/"+el+"\">"+el+"</a><br>");})
 
         modal.style.display = "block";
 

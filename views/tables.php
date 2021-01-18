@@ -132,7 +132,7 @@
         $("#modal").empty();
         x=x.split(',');
         console.log(x);
-        $.each(x, function(i,el){$("#modal").append("<a href=./files/"+el+">"+el+"</a><br>");})
+        $.each(x, function(i,el){$("#modal").append("<a href=\"./files/"+el+"\">"+el+"</a><br>");})
 
         modal.style.display = "block";
 
