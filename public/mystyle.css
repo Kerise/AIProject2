@@ -17,13 +17,16 @@ body
 }
 .option{
     color: white;
-    margin-right: 170px;
     margin-top: 20px;
     margin-bottom: 20px;
     padding: 10px;
     border-left: 2px solid #fff;
     border-right: 2px solid #fff;
 }
+#home2,#licence2,#device2,#licencje,#faktury,#sprzet,#rejestracja{
+    margin-right: 60px;
+}
+
 
 .option2{
     color: white;
